@@ -1,0 +1,62 @@
+.develo-slider-viewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%; }
+  .develo-slider-viewport .develo-slider-control {
+    font-size: 20px;
+    line-height: 16px;
+    position: absolute;
+    top: calc(50% - 10px );
+    text-align: center;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 2px solid #555555;
+    color: #555555;
+    width: 20px;
+    height: 20px; }
+    .develo-slider-viewport .develo-slider-control.next {
+      right: 10px; }
+    .develo-slider-viewport .develo-slider-control.previous {
+      left: 10px; }
+    .develo-slider-viewport .develo-slider-control:hover {
+      cursor: pointer;
+      text-decoration: none; }
+    .develo-slider-viewport .develo-slider-control.white {
+      border: 2px solid white;
+      color: white; }
+    .develo-slider-viewport .develo-slider-control.red {
+      border: 2px solid #9d261d;
+      color: #9d261d; }
+    .develo-slider-viewport .develo-slider-control.blue {
+      border: 2px solid #049cdb;
+      color: #049cdb; }
+    .develo-slider-viewport .develo-slider-control.black {
+      border: 2px solid black;
+      color: black; }
+  .develo-slider-viewport.display-controls-on-hover .develo-slider-control.next,
+  .develo-slider-viewport.display-controls-on-hover .develo-slider-control.previous {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s; }
+  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control.next,
+  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control.previous {
+    opacity: 1;
+    visibility: visible; }
+  .develo-slider-viewport.blue {
+    background: #049cdb; }
+  .develo-slider-viewport.red {
+    background: #9d261d; }
+
+.develo-slider-container {
+  width: 10px;
+  -webkit-transition: 0.5s margin-left;
+  -moz-transition: 0.5s margin-left;
+  -o-transition: 0.5s margin-left;
+  transition: 0.5s margin-left; }
+
+.develo-slider-item {
+  float: left; }

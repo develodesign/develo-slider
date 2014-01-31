@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Develo Sliders a jQuery Plugin">
+	<meta name="author" content="Develo Design">
+
+	<title>Develo Slider jQuery plugin</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="styles/bootstrap.css" rel="stylesheet">
+	<link href="styles/jumbotron-narrow.css" rel="stylesheet">
+
+	<!-- Prettify -->
+	<link href="lib/google-code-prettify/prettify.css" rel="stylesheet">
+
+	<!-- font awesome -->
+	<link href="styles/font-awesome.css" rel="stylesheet">
+
+	<!-- Develo Slider CSS -->
+	<link href="../styles/develo-slider.css" rel="stylesheet">
+
+	<!-- Page Css -->
+	<link href="styles/page.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="header">
+		<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="http://develodesign.co.uk" title="Web Development Birmingham">Develo // design</a></li>
+			<li><a href="#documentation" title="Api Documentation">Documentation</a></li>
+		</ul>
+		<h3 class="text-muted">Develo Slider</h3>
+	</div>
+
+	<div class="jumbotron">
+		<h1>Develo Slider</h1>
+		<p class="lead">
+			Simple, easy to use slider plugin for jQuery that uses CSS3 animations.
+		</p>
+		<p>Develo Slider is lightweight, only 3kb compressed and 2kb for the css.</p>
+	</div>
+
+	<div class="row-fluid content">
+
+		<div class="span12">
+
+			<h4>Simple image slider</h4>
+
+			<p>
+				A simple image slider of premier league football clubs* with controls that are only displayed when the slider is hovered.
+			</p>
+
+			<div id="slider-one" class="slider-demo">
+
+				<img src="images/image1.png" alt="image 1">
+				<img src="images/image2.png" alt="image 2">
+				<img src="images/image3.png" alt="image 3">
+				<img src="images/image4.png" alt="image 4">
+				<img src="images/image5.png" alt="image 5">
+				<img src="images/image6.png" alt="image 6">
+				<img src="images/image7.png" alt="image 7">
+				<img src="images/image8.png" alt="image 8">
+				<img src="images/image9.png" alt="image 9">
+				<img src="images/image10.png" alt="image 10">
+				<img src="images/image11.png" alt="image 11">
+				<img src="images/image12.png" alt="image 12">
+				<img src="images/image13.png" alt="image 13">
+				<img src="images/image14.png" alt="image 14">
+				<img src="images/image15.png" alt="image 15">
+				<img src="images/image16.png" alt="image 16">
+				<img src="images/image17.png" alt="image 17">
+				<img src="images/image18.png" alt="image 18">
+
+			</div>
+
+			<p>
+				<small>
+					* OK, maybe not all of them are premier league...
+				</small>
+			</p>
+
+			<p>
+				<a class="btn btn-success show-me" href="#slider-one-code" role="button" data-target="slider-one-code">Show me</a>
+			</p>
+
+<pre id="slider-one-code" class="prettyprint linenums hide">
+
+&lt;div id=&quot;slider-one&quot;&gt;
+
+	&lt;img src=&quot;images/image1.png&quot;&gt;
+
+	&lt;img src=&quot;images/image2.png&quot;&gt;
+
+	...
+
+&lt;/div&gt;
+
+&lt;script&gt;
+
+	$( '#slider-one' ).develoSlider({
+		displayOnHover: true,
+		items: $( '#slider-one img' )
+	} );
+
+&lt;/script&gt;
+
+</pre>
+
+		</div>
+
+	</div>
+
+	<div class="row-fluid content">
+
+		<div class="span12">
+
+			<h4>Specify your own colour-schemes</h4>
+
+			<p>
+				You can uses the predefined colour classes to customise the colour of the sliders or you can create your
+				own colour classes in CSS and use them.
+			</p>
+
+			<div class="row-fluid">
+
+				<div class="span6">
+
+					<div class="slider-demo" id="slider-two">
+
+						<i class="fa fa-5x fa-dribbble"></i>
+						<i class="fa fa-5x fa-twitter"></i>
+						<i class="fa fa-5x fa-stack-overflow"></i>
+						<i class="fa fa-5x fa-windows"></i>
+						<i class="fa fa-5x fa-skype"></i>
+						<i class="fa fa-5x fa-html5"></i>
+						<i class="fa fa-5x fa-css3"></i>
+						<i class="fa fa-5x fa-facebook"></i>
+						<i class="fa fa-5x fa-youtube"></i>
+						<i class="fa fa-5x fa-apple"></i>
+						<i class="fa fa-5x fa-android"></i>
+
+					</div>
+
+				</div>
+
+				<div class="span6">
+
+					<div class="slider-demo" id="slider-three">
+
+						<i class="fa fa-5x fa-dribbble"></i>
+						<i class="fa fa-5x fa-twitter"></i>
+						<i class="fa fa-5x fa-stack-overflow"></i>
+						<i class="fa fa-5x fa-windows"></i>
+						<i class="fa fa-5x fa-skype"></i>
+						<i class="fa fa-5x fa-html5"></i>
+						<i class="fa fa-5x fa-css3"></i>
+						<i class="fa fa-5x fa-facebook"></i>
+						<i class="fa fa-5x fa-youtube"></i>
+						<i class="fa fa-5x fa-apple"></i>
+						<i class="fa fa-5x fa-android"></i>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<p>
+				<a class="btn btn-success show-me" href="#slider-two-code" role="button" data-target="slider-two-code">Show me</a>
+			</p>
+
+			<pre id="slider-two-code" class="prettyprint linenums hide">
+
+&lt;script&gt;
+
+var $sliderTwo = $( '#slider-two' ).develoSlider( {
+	colourClass: 'blue',
+	controls: {
+		colourClass: 'black'
+	},
+	items: $( '#slider-two i' )
+} );
+
+var $sliderThree = $( '#slider-three' ).develoSlider( {
+	colourClass: 'red',
+	controls: {
+		colourClass: 'white'
+	},
+	items: $( '#slider-three i' )
+} );
+
+&lt;/script&gt;
+
+			</pre>
+
+		</div>
+
+	</div>
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+			<h4>Dynamically add items on the fly</h4>
+
+			<p>
+				You can access the slider object from anywhere and add or delete items on the fly. Nice feature if you
+				are using ajax to populate the slider. (See the documentation for all the api options).
+			</p>
+
+			<p>
+				<a class="btn btn-success show-me" href="#slider-api-code" role="button" data-target="slider-api-code">Show me</a>
+			</p>
+
+			<pre id="slider-api-code" class="prettyprint linenums hide">
+
+&lt;script&gt;
+
+
+var $slider = $( '#slider' ).develoSlider();
+
+// Use the data jquery method to expose the slider API
+var slider = $slider.data( 'develo-slider' );
+
+// Populate the slider
+$.ajax({
+	success: function( data ){
+
+		// OK so lets pretend data has some items that we want to spin over and add to the slider
+		for( var i = 0; i < data.items.length; i++ ){
+
+			var item = data.items[i]; // This could be an image? or any html content
+
+			// Add it to the slider
+			slider.addItem( item );
+		}
+	},
+	url: 'your/url'
+});
+
+&lt;/script&gt;
+
+			</pre>
+
+		</div>
+
+	</div>
+
+	<section class="row-fluid" id="documentation">
+
+		<h2>Api Documentation</h2>
+
+		<p>View the source for the API documentation.</p>
+
+	</section>
+
+	<div class="footer">
+		<p>&copy; Develo // design 2014</p>
+	</div>
+
+</div> <!-- /container -->
+
+
+<!-- Le JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="lib/google-code-prettify/prettify.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../scripts/develo-slider.js"></script>
+
+<script>
+
+	$(function(){
+	//$( window ).load( function(){
+
+		var $sliderOne = $( '#slider-one' ).develoSlider( {
+			controls: {
+				displayOnHover: true
+			},
+			items: $( '#slider-one img' )
+		} );
+
+		var slider = $sliderOne.data( 'develo-slider' );
+
+		var $sliderTwo = $( '#slider-two' ).develoSlider( {
+			colourClass: 'blue',
+			controls: {
+				colourClass: 'black'
+			},
+			items: $( '#slider-two i' )
+		} );
+
+
+		var $sliderThree = $( '#slider-three' ).develoSlider( {
+			colourClass: 'red',
+			controls: {
+				colourClass: 'white'
+			},
+			items: $( '#slider-three i' )
+		} );
+
+		$( '.show-me' ).on( 'click tap', function(){
+
+			var $button = $( this );
+			var target = $button.data( 'target' );
+
+			$( '#' + target ).toggleClass( 'hide' );
+		} );
+
+		prettyPrint();
+	} );
+</script>
+
+</body>
+</html>
