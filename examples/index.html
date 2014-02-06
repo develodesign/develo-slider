@@ -212,6 +212,151 @@ var $sliderThree = $( '#slider-three' ).develoSlider( {
 
 		<div class="span12">
 
+			<h4>Auto slide one item a time</h4>
+
+			<p>
+				You can make your own html/image content slider that slides one slide at a time by ensuring the
+				sliders container, and the move amount are the same as each slides width. By default the slider will not
+				auto slide. However if you pass in a duration in as the autoSlide option, it'll cycle through all the
+				slides.
+			</p>
+
+			<div id="slider-four-container">
+
+				<ul class="slider-demo" id="slider-four">
+
+					<li class="slider-item">
+
+						<h2>This is the first slide.</h2>
+
+						<p>It&rsquo;s soooooo kewl.</p>
+
+					</li>
+
+					<li class="slider-item">
+
+						<h2>This is my second slide</h2>
+
+						<p>It has an ordered list AND an unordered list...</p>
+
+						<div class="row-fluid">
+
+							<div class="span6">
+
+								<ol>
+									<li>First Item</li>
+									<li>Second Item</li>
+									<li>Third Item</li>
+									<li>Forth Item</li>
+								</ol>
+
+							</div>
+
+							<div class="span6">
+
+								<ul>
+									<li>Item</li>
+									<li>Item</li>
+									<li>Item</li>
+									<li>Item</li>
+								</ul>
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="slider-item">
+
+						<h2>Another awesome slide!</h2>
+
+						<p>This is the last slide. Make it count.</p>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<p>
+				<a class="btn btn-success show-me" href="#slider-four-code" role="button" data-target="slider-four-code">Show me</a>
+			</p>
+			
+			<pre id="slider-four-code" class="prettyprint linenums hide">
+
+&lt;div id="slider-four-container"&gt;
+
+	&lt;ul class="slider-demo" id="slider-four"&gt;
+
+		&lt;li class="slider-item"&gt;
+
+			&lt;h2&gt;This is the first slide.&lt;/h2&gt;
+
+			...
+
+		&lt;/li&gt;
+
+		&lt;li class="slider-item"&gt;
+
+			&lt;h2&gt;This is my second slide&lt;/h2&gt;
+
+			...
+
+		&lt;/li&gt;
+
+		&lt;li class="slider-item"&gt;
+
+			&lt;h2&gt;Another awesome slide!&lt;/h2&gt;
+
+			...
+
+		&lt;/li&gt;
+
+	&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;style&gt;
+
+#slider-four-container
+{
+	height: 240px;
+	margin: 0 auto;
+	width: 480px;
+}
+
+#slider-four-container .slider-item
+{
+	padding: 0;
+	width: 480px; /* Make sure it's the same as the container's width */
+}
+
+&lt;/style&gt;
+
+&lt;script&gt;
+
+var $sliderFour = $( '#slider-four' ).develoSlider( {
+	autoSlide: 2000, // 2 seconds
+	controls: {
+		display: false // or 'hover' or true
+	},
+	items: $( '#slider-four li.slider-item' ),
+	moveAmount: parseInt( $( '#slider-four li.slider-item' ).width() ) // Should be the same as the slide width
+} );
+
+&lt;/script&gt;
+
+			</pre>
+
+		</div>
+
+	</div>
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
 			<h4>Dynamically add items on the fly</h4>
 
 			<p>
@@ -281,17 +426,15 @@ $.ajax({
 
 <script>
 
-	$(function(){
-	//$( window ).load( function(){
+	//$(function(){
+	$( window ).load( function(){
 
 		var $sliderOne = $( '#slider-one' ).develoSlider( {
 			controls: {
-				displayOnHover: true
+				display: 'hover'
 			},
 			items: $( '#slider-one img' )
 		} );
-
-		var slider = $sliderOne.data( 'develo-slider' );
 
 		var $sliderTwo = $( '#slider-two' ).develoSlider( {
 			colourClass: 'blue',
@@ -308,6 +451,15 @@ $.ajax({
 				colourClass: 'white'
 			},
 			items: $( '#slider-three i' )
+		} );
+
+		var $sliderFour = $( '#slider-four' ).develoSlider( {
+			autoSlide: 2000,
+			controls: {
+				display: false
+			},
+			items: $( '#slider-four li.slider-item' ),
+			moveAmount: parseInt( $( '#slider-four li.slider-item' ).width() )
 		} );
 
 		$( '.show-me' ).on( 'click tap', function(){

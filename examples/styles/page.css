@@ -9,6 +9,11 @@
 	margin-bottom: 20px;
 }
 
+.slider-demo li.slider-item
+{
+	list-style: none;
+}
+
 #slider-two
 {
 	color: #dce9ff;
@@ -17,4 +22,18 @@
 #slider-three
 {
 	color: #000;
+}
+
+/* Slider four */
+#slider-four-container
+{
+	height: 240px;
+	margin: 0 auto;
+	width: 480px;
+}
+
+#slider-four-container .slider-item
+{
+	padding: 0;
+	width: 480px;
 }
