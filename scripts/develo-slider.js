@@ -126,6 +126,9 @@
 		this.$previous.on( 'click tap', $.proxy( this.moveSliderLeft, this ) );
 	};
 
+	/**
+	 * Sets up the auto slide bindings
+	 */
 	DeveloSlider.prototype.setupAutoSlideBindings = function(){
 
 		this.$el.on( 'mouseenter', $.proxy( this.autoSlideStop, this ) );
