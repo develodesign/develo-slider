@@ -31,4 +31,10 @@ $( '#slider-one' ).develoSlider({
 
 ```
 
+### Advanced Usage & Examples ###
+
+For some more advanced usages and documentation then have a look in the the examples folder.
+
+We have some working examples and documentation on our website: http://www.develodesign.co.uk/develo-slider/examples/
+
 
