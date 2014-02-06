@@ -34,25 +34,26 @@
     .develo-slider-viewport .develo-slider-control.black {
       border: 2px solid black;
       color: black; }
-  .develo-slider-viewport.display-controls-on-hover .develo-slider-control.next,
-  .develo-slider-viewport.display-controls-on-hover .develo-slider-control.previous {
+  .develo-slider-viewport.display-controls-on-hover .develo-slider-control {
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s; }
-  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control.next,
-  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control.previous {
+  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control {
     opacity: 1;
     visibility: visible; }
+  .develo-slider-viewport.hide-controls .develo-slider-control {
+    opacity: 0;
+    visibility: hidden; }
   .develo-slider-viewport.blue {
     background: #049cdb; }
   .develo-slider-viewport.red {
     background: #9d261d; }
 
 .develo-slider-container {
-  width: 10px;
+  width: 9999px;
   -webkit-transition: 0.5s margin-left;
   -moz-transition: 0.5s margin-left;
   -o-transition: 0.5s margin-left;

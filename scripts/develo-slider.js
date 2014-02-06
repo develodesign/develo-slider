@@ -8,6 +8,9 @@
 	// Store the class name
 	var className;
 
+	// Store timeout for auto slider
+	var autoSlide;
+
 	/**
 	 * @constructor
 	 *
@@ -20,11 +23,12 @@
 	var DeveloSlider = function( $el, options ){
 
 		this.options = $.extend( true, {
+			autoSlide: false,
 			className: 'develo-slider',
 			colourClass: null,
 			controls: {
 				colourClass: null,
-				displayOnHover: false,
+				display: true,
 				next: {
 					content: '&gt;'
 				},
@@ -48,6 +52,13 @@
 		this.setupBindings();
 
 		this.populateSlider();
+
+		if( this.options.autoSlide ) {
+
+			this.setupAutoSlideBindings();
+			this.autoSlide();
+		}
+
 	};
 
 	/**
@@ -65,6 +76,17 @@
 			.prependTo( this.$el )
 		;
 
+		if( this.options.colourClass )
+			this.$el.addClass( this.options.colourClass );
+
+		this.renderControls();
+	};
+
+	/**
+	 * Renders the controls and the required class names
+	 */
+	DeveloSlider.prototype.renderControls = function(){
+
 		this.$next = $( '<a/>' )
 			.addClass( className + '-control' )
 			.addClass( 'next' )
@@ -79,16 +101,21 @@
 			.appendTo( this.$el )
 		;
 
-		if( this.options.controls.displayOnHover )
-			this.$el.addClass( 'display-controls-on-hover' );
+		switch( this.options.controls.display ) {
+
+			case 'hover':
+				this.$el.addClass( 'display-controls-on-hover' );
+				break;
+
+			case false:
+				this.$el.addClass( 'hide-controls' );
+				break;
+		}
 
 		if( this.options.controls.colourClass ) {
 			this.$next.addClass( this.options.controls.colourClass );
 			this.$previous.addClass( this.options.controls.colourClass );
 		}
-
-		if( this.options.colourClass )
-			this.$el.addClass( this.options.colourClass );
 	};
 
 	/**
@@ -100,12 +127,18 @@
 		this.$previous.on( 'click tap', $.proxy( this.moveSliderLeft, this ) );
 	};
 
+	DeveloSlider.prototype.setupAutoSlideBindings = function(){
+
+		this.$el.on( 'mouseenter', $.proxy( this.autoSlideStop, this ) );
+		this.$el.on( 'mouseleave', $.proxy( this.autoSlide, this ) );
+	};
+
 	/**
 	 * Move the slider left
 	 */
 	DeveloSlider.prototype.moveSliderLeft = function(){
 
-		this.moveSlider( this.moveAmount );
+		return this.moveSlider( this.moveAmount );
 	};
 
 	/**
@@ -113,13 +146,16 @@
 	 */
 	DeveloSlider.prototype.moveSliderRight = function(){
 
-		this.moveSlider( -Math.abs( this.moveAmount ) );
+		return this.moveSlider( -Math.abs( this.moveAmount ) );
 	};
 
 	/**
-	 * Move the slider by updating the margin left position on the slider container
+	 * Move the slider by updating the margin left position on the slider container.
+	 * Returns the amount moved.
 	 *
 	 * @param offsetLeft int
+	 *
+	 * @return {Number}
 	 */
 	DeveloSlider.prototype.moveSlider = function( offsetLeft ){
 
@@ -138,6 +174,16 @@
 			newMarginLeft = constraints.min;
 
 		this.$container[0].style.marginLeft = newMarginLeft + 'px';
+
+		return parseInt( newMarginLeft ) - parseInt( currentMarginLeft );
+	};
+
+	/**
+	 * Resets the slider to the start point
+	 */
+	DeveloSlider.prototype.resetSliderPosition = function(){
+
+		this.moveSlider( this.getContainerWidth() );
 	};
 
 	/**
@@ -285,6 +331,28 @@
 	DeveloSlider.prototype.getNumberOfItems = function(){
 
 		return this.items.length;
+	};
+
+	/**
+	 * Starts the auto slide, and checks if the slide has moved. If it hasn't moved it presumes
+	 * we need to reset the slider.
+	 */
+	DeveloSlider.prototype.autoSlide = function(){
+
+		var amountMoved = this.moveSliderRight();
+
+		if( amountMoved == 0 )
+			this.resetSliderPosition();
+
+		autoSlide = setTimeout( $.proxy( this.autoSlide, this ), this.options.autoSlide );
+	};
+
+	/**
+	 * Stop the auto slide
+	 */
+	DeveloSlider.prototype.autoSlideStop = function(){
+
+		clearTimeout( autoSlide );
 	};
 
 	/**
