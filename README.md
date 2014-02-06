@@ -8,15 +8,17 @@ A simple, lightweight slider plugin for jQuery, that only uses CSS for animation
 Have your slider container and items on the page like so:
 
 ```html
-&lt;div id=&quot;slider-one&quot;&gt;
 
-	&lt;img src=&quot;images/image1.png&quot;&gt;
+<div id="slider-one" class="slider-demo">
 
-	&lt;img src=&quot;images/image2.png&quot;&gt;
+	<img src="images/image1.png" alt="image 1">
+
+    <img src="images/image2.png" alt="image 2">
 
 	...
 
-&lt;/div&gt;
+</div>
+
 ```
 
 Initiate your slider and tell it what items to use:
