@@ -22,7 +22,7 @@
 	<link href="../styles/develo-slider.css" rel="stylesheet">
 
 	<!-- Page Css -->
-	<link href="styles/page.css" rel="stylesheet">
+	<link href="styles/page.css?v=2" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -38,27 +38,33 @@
 	<div class="header">
 		<ul class="nav nav-pills pull-right">
 			<li class="active"><a href="http://develodesign.co.uk" title="Web Development Birmingham">Develo // design</a></li>
-			<li><a href="#documentation" title="Api Documentation">Documentation</a></li>
+			<li>
+				<a href="https://github.com/develodesign/develo-slider" title="Download the code on github">
+					<i class="fa fa-github"></i> Get the Code!
+				</a>
+			</li>
 		</ul>
 		<h3 class="text-muted">Develo Slider</h3>
 	</div>
 
 	<div class="jumbotron">
 		<h1>Develo Slider</h1>
+		<h2 class="hide">JQuery content slider</h2>
 		<p class="lead">
-			Simple, easy to use slider plugin for jQuery that uses CSS3 animations.
+			Simple, easy to use content slider plugin for jQuery that uses CSS3 animations.
 		</p>
-		<p>Develo Slider is lightweight, only 3kb compressed and 2kb for the css.</p>
+		<p>Develo Slider is lightweight, only 4kb compressed and 2kb for the css.</p>
 	</div>
 
 	<div class="row-fluid content">
 
 		<div class="span12">
 
-			<h4>Simple image slider</h4>
+			<h4>Simple jQuery image slider</h4>
 
 			<p>
-				A simple image slider of premier league football clubs* with controls that are only displayed when the slider is hovered.
+				A simple jquery image slider of premier league football clubs* with controls that are only displayed
+				when the slider is hovered.
 			</p>
 
 			<div id="slider-one" class="slider-demo">
@@ -128,8 +134,8 @@
 			<h4>Specify your own colour-schemes</h4>
 
 			<p>
-				You can uses the predefined colour classes to customise the colour of the sliders or you can create your
-				own colour classes in CSS and use them.
+				You can uses the predefined colour classes to customise the colour of your content sliders or you can
+				create your own colour classes in CSS and use them.
 			</p>
 
 			<div class="row-fluid">
@@ -212,7 +218,7 @@ var $sliderThree = $( '#slider-three' ).develoSlider( {
 
 		<div class="span12">
 
-			<h4>Auto slide one item a time</h4>
+			<h4>jQuery Auto Slider</h4>
 
 			<p>
 				You can make your own html/image content slider that slides one slide at a time by ensuring the
@@ -227,39 +233,17 @@ var $sliderThree = $( '#slider-three' ).develoSlider( {
 
 					<li class="slider-item">
 
-						<h2>This is the first slide.</h2>
+						<div class="padding-10">
 
-						<p>It&rsquo;s soooooo kewl.</p>
+							<h2>This is Birmingham Library.</h2>
 
-					</li>
+							<p>It&rsquo;s an Instagram.</p>
 
-					<li class="slider-item">
+							<p>All the cool kids are doing it.</p>
 
-						<h2>This is my second slide</h2>
+							<div class="instagram">
 
-						<p>It has an ordered list AND an unordered list...</p>
-
-						<div class="row-fluid">
-
-							<div class="span6">
-
-								<ol>
-									<li>First Item</li>
-									<li>Second Item</li>
-									<li>Third Item</li>
-									<li>Forth Item</li>
-								</ol>
-
-							</div>
-
-							<div class="span6">
-
-								<ul>
-									<li>Item</li>
-									<li>Item</li>
-									<li>Item</li>
-									<li>Item</li>
-								</ul>
+								<img src="http://distilleryimage8.ak.instagram.com/d783021a28fd11e3b3e122000a1f9a4f_7.jpg">
 
 							</div>
 
@@ -269,9 +253,64 @@ var $sliderThree = $( '#slider-three' ).develoSlider( {
 
 					<li class="slider-item">
 
-						<h2>Another awesome slide!</h2>
+						<div class="padding-10">
 
-						<p>This is the last slide. Make it count.</p>
+							<h2>Yey for snow!</h2>
+
+							<p>Snow is cool because:</p>
+
+							<ul>
+								<li>You can snowboard on it</li>
+								<li>It&rsquo;s soft</li>
+								<li>You can throw it at people</li>
+								<li>AND You can snowboard on it</li>
+							</ul>
+
+							<div class="instagram">
+
+								<img src="http://distilleryimage3.ak.instagram.com/01b8be3a6f1211e3bd230a26c88f7963_8.jpg">
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="slider-item">
+
+						<div class="padding-10">
+
+							<h2>Football is good...</h2>
+
+							<p>Birmingham City win 95% of their games.</p>
+
+							<p>That&rsquo;s a scientific fact.</p>
+
+							<div class="instagram">
+
+								<img src="http://distilleryimage10.ak.instagram.com/c9d2f02c262211e3b7ea22000a1f9366_7.jpg">
+
+							</div>
+
+						</div>
+
+					</li>
+
+					<li class="slider-item">
+
+						<div class="padding-10">
+
+							<h2>...tennis is better.</h2>
+
+							<p>Even <em>without</em> strawberries and cream.</p>
+
+							<div class="instagram">
+
+								<img src="http://distilleryimage3.ak.instagram.com/4c0aead646b211e382980e85391c3639_8.jpg">
+
+							</div>
+
+						</div>
 
 					</li>
 
@@ -406,7 +445,10 @@ $.ajax({
 
 		<h2>Api Documentation</h2>
 
-		<p>View the source for the API documentation.</p>
+		<p>
+			View the <a href="../scripts/develo-slider.js" title="jQuery content slider">source</a> for the
+			API documentation.
+		</p>
 
 	</section>
 

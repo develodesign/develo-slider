@@ -58,7 +58,6 @@
 			this.setupAutoSlideBindings();
 			this.autoSlide();
 		}
-
 	};
 
 	/**
