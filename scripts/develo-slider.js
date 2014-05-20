@@ -5,6 +5,8 @@
  */
 (function( $ ){
 
+	'use strict';
+
 	// Store the class name
 	var className;
 
@@ -66,13 +68,18 @@
 	DeveloSlider.prototype.render = function(){
 
 		this.$el
-			.addClass( className + '-viewport' )
+			.addClass( className )
 			.empty()
+		;
+
+		this.$viewport = $( '<div/>' )
+			.addClass( className + '-viewport' )
+			.appendTo( this.$el )
 		;
 
 		this.$container = $( '<div/>' )
 			.addClass( className + '-container' )
-			.prependTo( this.$el )
+			.prependTo( this.$viewport )
 		;
 
 		if( this.options.colourClass )
@@ -131,8 +138,8 @@
 	 */
 	DeveloSlider.prototype.setupAutoSlideBindings = function(){
 
-		this.$el.on( 'mouseenter', $.proxy( this.autoSlideStop, this ) );
-		this.$el.on( 'mouseleave', $.proxy( this.autoSlide, this ) );
+		this.$viewport.on( 'mouseenter', $.proxy( this.autoSlideStop, this ) );
+		this.$viewport.on( 'mouseleave', $.proxy( this.autoSlide, this ) );
 	};
 
 	/**
@@ -286,7 +293,7 @@
 
 		return {
 			max: 0,
-			min: -( this.getContainerWidth() - this.$el.width() )
+			min: -( this.getContainerWidth() - this.$viewport.width() )
 		}
 	};
 
@@ -309,7 +316,7 @@
 
 		for( var i = 0; i < this.items.length; i++ ){
 
-			newWidth = newWidth + this.items[i].offsetWidth;
+			newWidth = newWidth + $( this.items[i] ).outerWidth( true );
 		}
 
 		this.setContainerWidth( newWidth );

@@ -1,8 +1,10 @@
-.develo-slider-viewport {
-  position: relative;
-  overflow: hidden;
-  width: 100%; }
-  .develo-slider-viewport .develo-slider-control {
+.develo-slider {
+  position: relative; }
+  .develo-slider .develo-slider-viewport {
+    position: relative;
+    overflow: hidden;
+    width: 100%; }
+  .develo-slider .develo-slider-control {
     font-size: 20px;
     line-height: 16px;
     position: absolute;
@@ -15,41 +17,41 @@
     color: #555555;
     width: 20px;
     height: 20px; }
-    .develo-slider-viewport .develo-slider-control.next {
+    .develo-slider .develo-slider-control.next {
       right: 10px; }
-    .develo-slider-viewport .develo-slider-control.previous {
+    .develo-slider .develo-slider-control.previous {
       left: 10px; }
-    .develo-slider-viewport .develo-slider-control:hover {
+    .develo-slider .develo-slider-control:hover {
       cursor: pointer;
       text-decoration: none; }
-    .develo-slider-viewport .develo-slider-control.white {
+    .develo-slider .develo-slider-control.white {
       border: 2px solid white;
       color: white; }
-    .develo-slider-viewport .develo-slider-control.red {
+    .develo-slider .develo-slider-control.red {
       border: 2px solid #9d261d;
       color: #9d261d; }
-    .develo-slider-viewport .develo-slider-control.blue {
+    .develo-slider .develo-slider-control.blue {
       border: 2px solid #049cdb;
       color: #049cdb; }
-    .develo-slider-viewport .develo-slider-control.black {
+    .develo-slider .develo-slider-control.black {
       border: 2px solid black;
       color: black; }
-  .develo-slider-viewport.display-controls-on-hover .develo-slider-control {
+  .develo-slider.display-controls-on-hover .develo-slider-control {
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s; }
-  .develo-slider-viewport.display-controls-on-hover:hover .develo-slider-control {
+  .develo-slider.display-controls-on-hover:hover .develo-slider-control {
     opacity: 1;
     visibility: visible; }
-  .develo-slider-viewport.hide-controls .develo-slider-control {
+  .develo-slider.hide-controls .develo-slider-control {
     opacity: 0;
     visibility: hidden; }
-  .develo-slider-viewport.blue {
+  .develo-slider.blue {
     background: #049cdb; }
-  .develo-slider-viewport.red {
+  .develo-slider.red {
     background: #9d261d; }
 
 .develo-slider-container {
