@@ -27,15 +27,18 @@
 		this.options = $.extend( true, {
 			autoSlide: false,
 			className: 'develo-slider',
-			colourClass: null,
 			controls: {
-				colourClass: null,
-				display: true,
+				indicators: {
+					content: '',
+					display: true
+				},
 				next: {
-					content: '&gt;'
+					content: '&gt;',
+					display: true
 				},
 				previous: {
-					content: '&lt;'
+					content: '&lt;',
+					display: true
 				}
 			},
 			items: [],
@@ -59,7 +62,7 @@
 		if( this.options.autoSlide ) {
 
 			this.setupAutoSlideBindings();
-			this.autoSlide();
+			this.autoSlideStart();
 		}
 	};
 
@@ -81,9 +84,6 @@
 			.addClass( className + '-container' )
 			.prependTo( this.$viewport )
 		;
-
-		if( this.options.colourClass )
-			this.$el.addClass( this.options.colourClass );
 
 		this.renderControls();
 	};
@@ -107,7 +107,7 @@
 			.appendTo( this.$el )
 		;
 
-		switch( this.options.controls.display ) {
+		switch( this.options.controls.next.display ) {
 
 			case 'hover':
 				this.$el.addClass( 'display-controls-on-hover' );
@@ -118,10 +118,66 @@
 				break;
 		}
 
-		if( this.options.controls.colourClass ) {
-			this.$next.addClass( this.options.controls.colourClass );
-			this.$previous.addClass( this.options.controls.colourClass );
+		if( this.options.controls.indicators.display ) {
+
+			this.$indicators = $( '<ol/>' )
+				.addClass( className + '-indicators' )
+				.appendTo( this.$el )
+			;
 		}
+	};
+
+	/**
+	 * Add a list item to the indicators
+	 *
+	 * @private
+	 */
+	DeveloSlider.prototype._addIndicator = function(){
+
+		var $indicator = $( '<li>' )
+				.html( this.options.controls.indicators.content )
+				.appendTo( this.$indicators )
+			;
+	};
+
+	/**
+	 * Updates the indicators and selects the correct one.
+	 *
+	 * @param indexToSelect
+	 * @private
+	 */
+	DeveloSlider.prototype._updateIndicators = function( indexToSelect ){
+
+		if( typeof indexToSelect === 'undefined' )
+			indexToSelect = this._findSelectedIndicator() + 1;
+
+		this.$indicators.find( 'li' ).removeClass( 'selected' );
+		return this.$indicators.find( 'li:eq( ' + indexToSelect + ')' ).addClass( 'selected' );
+	};
+
+	/**
+	 * Find the currently selected indicatior
+	 *
+	 * @returns {number}
+	 * @private
+	 */
+	DeveloSlider.prototype._findSelectedIndicator = function(){
+
+		for( var i = 0; i < this.$indicators.find( 'li' ).length; i++ ) {
+
+			if( $( this.$indicators.find( 'li' )[i] ).hasClass( 'selected' ) )
+				return i;
+		}
+	};
+
+	/**
+	 * Initialise the indicators, just select the first one.
+	 *
+	 * @private
+	 */
+	DeveloSlider.prototype._initialiseIndicators = function(){
+
+		this._updateIndicators( 0 );
 	};
 
 	/**
@@ -139,7 +195,7 @@
 	DeveloSlider.prototype.setupAutoSlideBindings = function(){
 
 		this.$viewport.on( 'mouseenter', $.proxy( this.autoSlideStop, this ) );
-		this.$viewport.on( 'mouseleave', $.proxy( this.autoSlide, this ) );
+		this.$viewport.on( 'mouseleave', $.proxy( this.autoSlideStart, this ) );
 	};
 
 	/**
@@ -168,10 +224,12 @@
 	 */
 	DeveloSlider.prototype.moveSlider = function( offsetLeft ){
 
-		var currentMarginLeft = this.$container[0].style.marginLeft;
+		var currentMarginLeft = this.$container[0].style.marginLeft ?
+			parseInt( this.$container[0].style.marginLeft ) :
+			0;
 
 		var newMarginLeft = currentMarginLeft ?
-			parseInt( currentMarginLeft  ) + offsetLeft :
+			currentMarginLeft + offsetLeft :
 			offsetLeft;
 
 		var constraints = this.getMarginConstraints();
@@ -183,6 +241,25 @@
 			newMarginLeft = constraints.min;
 
 		this.$container[0].style.marginLeft = newMarginLeft + 'px';
+
+		var amountMoved = newMarginLeft - currentMarginLeft;
+
+		if( this.options.controls.indicators.display ) {
+
+			if( amountMoved != 0 ) {
+
+				var indexToSelect = this._findSelectedIndicator();
+
+				if( amountMoved > 0 )
+					indexToSelect--; // Move backward
+
+				else
+					indexToSelect++; // Move forward
+
+				this._updateIndicators( indexToSelect );
+			}
+		}
+
 
 		return parseInt( newMarginLeft ) - parseInt( currentMarginLeft );
 	};
@@ -223,6 +300,8 @@
 		this.$container.append( $( this.items ) );
 
 		this.updateContainerWidth();
+
+		this._initialiseIndicators();
 	};
 
 	/**
@@ -246,6 +325,10 @@
 		if( this.options.keepItemWidth )
 			$item.width( parseInt( $item.width() ) );
 
+		// Add indicator if we are displaying them
+		if( this.options.controls.indicators.display )
+			this._addIndicator();
+
 		return item;
 	};
 
@@ -267,6 +350,10 @@
 
 		if( this.options.keepItemWidth )
 			$item.width( parseInt( $item.width() ) );
+
+		// Add indicator if we are displaying them
+		if( this.options.controls.indicators.display )
+			this._addIndicator();
 
 		return item;
 	};
@@ -352,6 +439,14 @@
 	};
 
 	/**
+	 *
+	 */
+	DeveloSlider.prototype.autoSlideStart = function(){
+
+		autoSlide = setTimeout( $.proxy( this.autoSlide, this ), this.options.autoSlide );
+	};
+
+	/**
 	 * Starts the auto slide, and checks if the slide has moved. If it hasn't moved it presumes
 	 * we need to reset the slider.
 	 */
@@ -362,7 +457,7 @@
 		if( amountMoved == 0 )
 			this.resetSliderPosition();
 
-		autoSlide = setTimeout( $.proxy( this.autoSlide, this ), this.options.autoSlide );
+		this.autoSlideStart();
 	};
 
 	/**

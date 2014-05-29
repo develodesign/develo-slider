@@ -1,3 +1,27 @@
+/**
+ * Justify text ensuring it's justified on the last line.
+ * Useful for properly justifying navigation elements.
+ */
+/**
+ * This mixin seems to be missing from the latest bootstrap sass mixins file
+ */
+/**
+ * Creates a circle!
+ */
+/**
+ * Headings for this theme
+ */
+/**
+ */
+/**
+ * Truncate text
+ */
+/**
+ * Make circular icons
+ */
+/**
+ * Creates a container within an element that maintains an aspect ratio.
+ */
 .develo-slider {
   position: relative; }
   .develo-slider .develo-slider-viewport {
@@ -5,43 +29,31 @@
     overflow: hidden;
     width: 100%; }
   .develo-slider .develo-slider-control {
-    font-size: 20px;
-    line-height: 16px;
+    background: none;
+    color: rgba(85, 85, 85, 0.3);
+    font-size: 55px;
+    line-height: 55px;
     position: absolute;
-    top: calc(50% - 10px );
+    top: calc(50% - 27.5px );
     text-align: center;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    border: 2px solid #555555;
-    color: #555555;
-    width: 20px;
-    height: 20px; }
+    line-height: 55px;
+    width: 55px;
+    height: 55px;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%; }
     .develo-slider .develo-slider-control.next {
-      right: 10px; }
+      right: -27.5px; }
     .develo-slider .develo-slider-control.previous {
-      left: 10px; }
+      left: -27.5px; }
     .develo-slider .develo-slider-control:hover {
       cursor: pointer;
       text-decoration: none; }
-    .develo-slider .develo-slider-control.white {
-      border: 2px solid white;
-      color: white; }
-    .develo-slider .develo-slider-control.red {
-      border: 2px solid #9d261d;
-      color: #9d261d; }
-    .develo-slider .develo-slider-control.blue {
-      border: 2px solid #049cdb;
-      color: #049cdb; }
-    .develo-slider .develo-slider-control.black {
-      border: 2px solid black;
-      color: black; }
   .develo-slider.display-controls-on-hover .develo-slider-control {
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -o-transition: opacity 1s;
     transition: opacity 1s; }
   .develo-slider.display-controls-on-hover:hover .develo-slider-control {
     opacity: 1;
@@ -49,17 +61,33 @@
   .develo-slider.hide-controls .develo-slider-control {
     opacity: 0;
     visibility: hidden; }
-  .develo-slider.blue {
-    background: #049cdb; }
-  .develo-slider.red {
-    background: #9d261d; }
 
 .develo-slider-container {
   width: 9999px;
   -webkit-transition: 0.5s margin-left;
-  -moz-transition: 0.5s margin-left;
-  -o-transition: 0.5s margin-left;
   transition: 0.5s margin-left; }
 
 .develo-slider-item {
   float: left; }
+
+.develo-slider-indicators {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%; }
+  .develo-slider-indicators li {
+    background-color: #999999;
+    display: inline-block;
+    margin-right: 5px;
+    line-height: 10px;
+    width: 10px;
+    height: 10px;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    -webkit-transition: 0.5s background-color;
+    transition: 0.5s background-color; }
+    .develo-slider-indicators li.selected {
+      background-color: #f44e52; }
