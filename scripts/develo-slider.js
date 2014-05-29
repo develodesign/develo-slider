@@ -39,6 +39,7 @@
 				}
 			},
 			items: [],
+			keepItemWidth: true,
 			moveAmount: 100 // px
 		}, options );
 
@@ -69,7 +70,6 @@
 
 		this.$el
 			.addClass( className )
-			.empty()
 		;
 
 		this.$viewport = $( '<div/>' )
@@ -236,9 +236,15 @@
 	 */
 	DeveloSlider.prototype._add = function( item ) {
 
-		$( item ).addClass( className + '-item' );
+		var $item = $( item );
+
+		$item.addClass( className + '-item' );
 
 		this.items.push( item );
+
+		// Fluid item width fix... Probably need to look at a nicer way of doing this.
+		if( this.options.keepItemWidth )
+			$item.width( parseInt( $item.width() ) );
 
 		return item;
 	};
@@ -251,13 +257,16 @@
 	DeveloSlider.prototype.addItem = function( item ){
 
 		var $item = this._add( item )
-			.appendTo( this.$container )
-		;
+				.appendTo( this.$container )
+			;
 
 		var width = parseInt( $item.outerWidth( true ) );
 		var newWidth = this.getContainerWidth() + width;
 
 		this.setContainerWidth( newWidth );
+
+		if( this.options.keepItemWidth )
+			$item.width( parseInt( $item.width() ) );
 
 		return item;
 	};
