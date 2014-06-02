@@ -59,6 +59,9 @@
 
 		this.populateSlider();
 
+		if( this.options.controls.indicators.display )
+			this._initialiseIndicators();
+
 		if( this.options.autoSlide ) {
 
 			this.setupAutoSlideBindings();
@@ -301,7 +304,7 @@
 
 		this.updateContainerWidth();
 
-		this._initialiseIndicators();
+
 	};
 
 	/**
